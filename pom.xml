@@ -19,7 +19,7 @@
         <module>jamie-notice</module>
         <module>jamie-config</module>
         <module>jamie-html</module>
-        <module>jamie-main</module>
+        <module>jamie-test</module>
     </modules>
 
     <properties>
