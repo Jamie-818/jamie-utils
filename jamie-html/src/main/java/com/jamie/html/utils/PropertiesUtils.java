@@ -1,4 +1,4 @@
-package com.jamie.natice.utils;
+package com.jamie.html.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,8 +8,6 @@ public class PropertiesUtils {
     /**
      * 获取resources文件夹下的配置文件
      * 
-     * @author jamie
-     * @date 2020/7/22 17:09
      * @param propertiesName 配置文件名
      * @return java.util.Properties
      */

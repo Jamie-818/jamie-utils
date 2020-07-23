@@ -1,12 +1,12 @@
 package com.jamie.natice.tack;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Properties;
-
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-
+import com.alibaba.fastjson.JSON;
+import com.jamie.natice.pojo.dto.CookieDTO;
+import com.jamie.natice.pojo.dto.ElecDTO;
+import com.jamie.natice.pojo.prop.JamieMailProp;
+import com.jamie.natice.utils.ElecUtils;
+import com.jamie.natice.utils.PropertiesUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -14,14 +14,11 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import com.alibaba.fastjson.JSON;
-import com.jamie.natice.pojo.dto.CookieDTO;
-import com.jamie.natice.pojo.dto.ElecDTO;
-import com.jamie.natice.pojo.prop.JamieMailProp;
-import com.jamie.natice.utils.ElecUtils;
-import com.jamie.natice.utils.PropertiesUtils;
-
-import lombok.extern.slf4j.Slf4j;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Properties;
 
 /**
  * 应用模块名称：定时器
