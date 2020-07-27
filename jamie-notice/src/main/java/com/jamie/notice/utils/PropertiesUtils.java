@@ -1,4 +1,4 @@
-package com.jamie.natice.utils;
+package com.jamie.notice.utils;
 
 import java.io.IOException;
 import java.io.InputStream;

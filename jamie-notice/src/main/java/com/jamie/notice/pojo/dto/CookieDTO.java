@@ -1,4 +1,4 @@
-package com.jamie.natice.pojo.dto;
+package com.jamie.notice.pojo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.jamie.natice.constants;
+package com.jamie.notice.constants;
 
 import org.apache.http.Header;
 

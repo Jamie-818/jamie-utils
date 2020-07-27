@@ -1,4 +1,4 @@
-package com.jamie.natice.utils;
+package com.jamie.notice.utils;
 
 import java.util.*;
 
@@ -9,9 +9,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.jamie.natice.pojo.dto.CookieDTO;
-import com.jamie.natice.pojo.dto.ElecDTO;
-import com.jamie.natice.pojo.dto.HttpClientResponseDTO;
+import com.jamie.notice.pojo.dto.CookieDTO;
+import com.jamie.notice.pojo.dto.ElecDTO;
+import com.jamie.notice.pojo.dto.HttpClientResponseDTO;
 
 /**
  * 应用模块名称：

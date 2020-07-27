@@ -1,4 +1,4 @@
-package com.jamie.natice.utils;
+package com.jamie.notice.utils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -23,7 +23,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-import com.jamie.natice.pojo.dto.HttpClientResponseDTO;
+import com.jamie.notice.pojo.dto.HttpClientResponseDTO;
 
 import lombok.Data;
 

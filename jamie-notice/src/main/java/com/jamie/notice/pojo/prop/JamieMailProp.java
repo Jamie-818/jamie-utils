@@ -1,4 +1,4 @@
-package com.jamie.natice.pojo.prop;
+package com.jamie.notice.pojo.prop;
 
 import java.util.List;
 

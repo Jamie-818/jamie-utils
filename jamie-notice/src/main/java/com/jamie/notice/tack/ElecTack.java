@@ -1,11 +1,11 @@
-package com.jamie.natice.tack;
+package com.jamie.notice.tack;
 
 import com.alibaba.fastjson.JSON;
-import com.jamie.natice.pojo.dto.CookieDTO;
-import com.jamie.natice.pojo.dto.ElecDTO;
-import com.jamie.natice.pojo.prop.JamieMailProp;
-import com.jamie.natice.utils.ElecUtils;
-import com.jamie.natice.utils.PropertiesUtils;
+import com.jamie.notice.pojo.dto.CookieDTO;
+import com.jamie.notice.pojo.dto.ElecDTO;
+import com.jamie.notice.pojo.prop.JamieMailProp;
+import com.jamie.notice.utils.ElecUtils;
+import com.jamie.notice.utils.PropertiesUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
