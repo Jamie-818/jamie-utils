@@ -20,6 +20,7 @@
         <module>jamie-config</module>
         <module>jamie-html</module>
         <module>jamie-test</module>
+        <module>jamie-apidoc</module>
     </modules>
 
     <properties>
