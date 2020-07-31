@@ -21,6 +21,7 @@
         <module>jamie-html</module>
         <module>jamie-test</module>
         <module>jamie-apidoc</module>
+        <module>jamie-common</module>
     </modules>
 
     <properties>
