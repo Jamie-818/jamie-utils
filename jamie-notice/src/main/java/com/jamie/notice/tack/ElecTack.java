@@ -8,11 +8,11 @@ import com.jamie.notice.utils.ElecUtils;
 import com.jamie.notice.utils.PropertiesUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -22,21 +22,23 @@ import java.util.Properties;
 
 /**
  * 应用模块名称：定时器
- *
  * @author show
  * @since 2020/7/10 11:07
  */
-@Configuration
-@EnableScheduling
+@Component
+@PropertySource(value = "classpath:application.properties")
 @Slf4j
 public class ElecTack {
+
     @Autowired
     private JamieMailProp jamieMailProp;
+
     @Autowired
     private JavaMailSender javaMailSender;
 
-    // @Scheduled(cron = "0/5 * * * * ?")
-    @Scheduled(cron = "0 0 9,18 * * ?")
+    //    @Scheduled(cron = "0/5 * * * * ?")
+    //    @Scheduled(cron = "0 0 9,18 * * ?")
+    @Scheduled(cron = "${cron.msg}")
     private void elecTack() throws MessagingException {
         log.info("执行静态定时任务时间: " + LocalDateTime.now());
         this.testSend();
@@ -54,12 +56,18 @@ public class ElecTack {
         String surplusElec = elecNumber.getSurplusElec();
         String monthElec = elecNumber.getMonthElec();
         LocalDateTime localDateTime = LocalDateTime.now();
-        log.info(
-            "时间：" + localDateTime.toString() + "，今日用电：" + todayElec + ",剩余电量：" + surplusElec + ",本月用电：" + monthElec);
+        log.info("时间："
+                + localDateTime.toString()
+                + "，今日用电："
+                + todayElec
+                + ",剩余电量："
+                + surplusElec
+                + ",本月用电："
+                + monthElec);
         double surplusElecNumber = Double.parseDouble(surplusElec.split("度")[0]);
         // 剩余电量低于20度就发邮件
-        if (surplusElecNumber <= 20.0) {
-            for (String emailAddress : emailTo) {
+        if(surplusElecNumber <= 30.0){
+            for(String emailAddress: emailTo){
                 log.info("正在发送邮件给" + emailAddress);
                 MimeMessage mimeMessage = javaMailSender.createMimeMessage();
                 MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
@@ -87,8 +95,14 @@ public class ElecTack {
         String monthElec = elecNumber.getMonthElec();
         System.out.println(JSON.toJSONString(elecNumber));
         LocalDateTime localDateTime = LocalDateTime.now();
-        log.info(
-            "时间：" + localDateTime.toString() + "，今日用电：" + todayElec + ",剩余电量：" + surplusElec + ",本月用电：" + monthElec);
+        log.info("时间："
+                + localDateTime.toString()
+                + "，今日用电："
+                + todayElec
+                + ",剩余电量："
+                + surplusElec
+                + ",本月用电："
+                + monthElec);
     }
 
 }

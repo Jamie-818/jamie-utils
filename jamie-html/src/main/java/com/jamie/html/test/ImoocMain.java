@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class ImoocMain {
     public static void main(String[] args) throws IOException {
-        String classId = "1225";
+        String classId = "1229";
         printClass(classId);
     }
 

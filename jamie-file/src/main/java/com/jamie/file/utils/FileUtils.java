@@ -1,31 +1,89 @@
-package utils;
-
-import sun.misc.BASE64Decoder;
+package com.jamie.file.utils;
 
 import java.io.*;
 import java.util.Base64;
 import java.util.Objects;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 /**
- * pdf相关工具类
- * @author xuanweiyao
- * @date 2020/8/20 10:03
+ * 文件操作类
+ * @author jamie
+ * @date 2020/7/23 9:23
  */
-public class PdfUtils {
+public class FileUtils {
+
+    /**
+     * 读取File文件
+     * @param file 文件类型
+     * @return 返回文件里面的文本字符串
+     */
+    public static String readFile(File file) {
+        System.out.println("————开始读取" + file.getPath() + "文件————");
+        try{
+            FileReader fileReader = new FileReader(file);
+            Reader reader = new InputStreamReader(new FileInputStream(file), UTF_8);
+            int ch;
+            StringBuilder sb = new StringBuilder();
+            while((ch = reader.read()) != -1){
+                sb.append((char)ch);
+            }
+            fileReader.close();
+            reader.close();
+            String jsonStr = sb.toString();
+            System.out.println("————读取" + file.getPath() + "文件结束!————");
+            return jsonStr;
+        }catch(Exception e){
+            System.out.println("————读取" + file.getPath() + "文件出现异常，读取失败!————");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 把文件转成文件流
+     * @param filePath 文件路径
+     * @return byte[] 文件流
+     */
+    public static byte[] file2Byte(String filePath) {
+        try{
+            File file = new File(filePath);
+            //获取输入流
+            FileInputStream fis = new FileInputStream(file);
+
+            //新的 byte 数组输出流，缓冲区容量1024byte
+            ByteArrayOutputStream bos = new ByteArrayOutputStream(1024);
+            //缓存
+            byte[] b = new byte[1024];
+            int n;
+            while((n = fis.read(b)) != -1){
+                bos.write(b, 0, n);
+            }
+            fis.close();
+            //改变为byte[]
+            byte[] data = bos.toByteArray();
+            //
+            bos.close();
+            return data;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+
+    }
 
     /**
      * base64转文件
-     * @param base64Content base64内容
-     * @param filePath      文件路径
+     * @param base64Str base64内容
+     * @param filePath  文件路径
      */
-    public static void base64StringToPdf(String base64Content, String filePath) {
-        BASE64Decoder decoder = new BASE64Decoder();
+    public static void base64Str2File(String base64Str, String filePath) {
         BufferedInputStream bis = null;
         FileOutputStream fos = null;
         BufferedOutputStream bos = null;
         try{
             // base64编码内容转换为字节数组
-            byte[] bytes = decoder.decodeBuffer(base64Content);
+            byte[] bytes = Base64.getDecoder().decode(base64Str);
             ByteArrayInputStream byteInputStream = new ByteArrayInputStream(bytes);
             bis = new BufferedInputStream(byteInputStream);
             File file = new File(filePath);
@@ -63,10 +121,10 @@ public class PdfUtils {
      * 3.底层输出流转换成字节数组，然后由BASE64Encoder的对象对流进行编码
      * @param file 文件
      */
-    static String pdfToBase64(File file) {
+    static String file2Base64(File file) {
         FileInputStream fin = null;
         BufferedInputStream bin = null;
-        ByteArrayOutputStream baos = null;
+        ByteArrayOutputStream baos;
         BufferedOutputStream bout = null;
         try{
             // 建立读取文件的文件输出流
@@ -95,9 +153,6 @@ public class PdfUtils {
             try{
                 Objects.requireNonNull(fin).close();
                 Objects.requireNonNull(bin).close();
-                // 关闭 ByteArrayOutputStream 无效。此类中的方法在关闭此流后仍可被调用，而不会产生任何 IOException
-                // IOException
-                // baos.close();
                 Objects.requireNonNull(bout).close();
             }catch(IOException e){
                 e.printStackTrace();
@@ -106,12 +161,9 @@ public class PdfUtils {
         return null;
     }
 
-    //    public static void main(String[] args) {
-    //        // 将PDF格式文件转成base64编码
-    //        String base64String = pdfToBase64(new File("D:\\Desktop\\1597828079696No05.pdf"));
-    //        System.out.println(base64String);
-    //        base64StringToPdf(base64String, "D:\\Desktop\\test.pdf");
-    //
-    //    }
+    public static void main(String[] args) {
+        byte[] bytes = FileUtils.file2Byte("src/main/resources/properties/application.properties");
+        System.out.println(bytes);
+    }
 
 }
