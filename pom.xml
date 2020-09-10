@@ -23,7 +23,7 @@
         <module>jamie-apidoc</module>
         <module>jamie-common</module>
         <module>jamie-file</module>
-        <module>jamie-lambda</module>
+        <module>jamie-jdk8</module>
     </modules>
 
     <properties>

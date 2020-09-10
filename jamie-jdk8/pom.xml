@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jamie-lambda</artifactId>
+    <artifactId>jamie-jdk8</artifactId>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
