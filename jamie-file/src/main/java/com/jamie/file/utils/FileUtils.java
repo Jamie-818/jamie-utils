@@ -1,7 +1,9 @@
 package com.jamie.file.utils;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.Base64;
+import java.util.LinkedList;
 import java.util.Objects;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -161,9 +163,67 @@ public class FileUtils {
         return null;
     }
 
-    public static void main(String[] args) {
-        byte[] bytes = FileUtils.file2Byte("src/main/resources/properties/application.properties");
-        System.out.println(bytes);
+    /**
+     * 获取目录下全部文件名
+     * @param path 文件路径
+     */
+    public static void listDirectory(String path) {
+        File file = new File(path);
+        if(file.exists()){
+            File[] files = file.listFiles();
+            if(null != files){
+                for(File file2: files){
+                    if(file2.isDirectory()){
+                        System.out.println("文件夹:" + file2.getName());
+                        listDirectory(file2.getAbsolutePath());
+                    }else{
+                        System.out.println("文件:" + file2.getName());
+                    }
+                }
+            }
+        }else{
+            System.out.println("文件不存在!");
+        }
     }
+
+    /**
+     * 获取目录下全部文件名
+     * @param path 文件路径
+     */
+    public static void listDirectory2(String path) {
+        int fileNum = 0, folderNum = 0;
+        File file = new File(path);
+
+        if(file.exists()){
+            File[] listFiles = file.listFiles();
+            if(listFiles == null){
+                return;
+            }
+            LinkedList<File> list = new LinkedList<>(Arrays.asList(listFiles));
+            while(!list.isEmpty()){
+                File[] files = list.removeFirst().listFiles();
+                if(null == files){
+                    continue;
+                }
+                for(File f: files){
+                    if(f.isDirectory()){
+                        System.out.println("文件夹:" + f.getAbsolutePath());
+                        list.add(f);
+                        folderNum++;
+                    }else{
+                        System.out.println("文件:" + f.getAbsolutePath());
+                        fileNum++;
+                    }
+                }
+            }
+        }else{
+            System.out.println("文件不存在!");
+        }
+        System.out.println("文件夹数量:" + folderNum + ",文件数量:" + fileNum);
+    }
+    //    public static void main(String[] args) {
+    //        byte[] bytes = FileUtils.file2Byte("src/main/resources/properties/application.properties");
+    //        System.out.println(bytes);
+    //    }
 
 }

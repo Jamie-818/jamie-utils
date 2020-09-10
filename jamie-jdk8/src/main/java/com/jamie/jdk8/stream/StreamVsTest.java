@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  * @author jamie
  * @date 2020/9/10 11:20
  */
-public class StreamVs {
+public class StreamVsTest {
 
     /**
      * 以原始集合操作实现需求
@@ -78,8 +78,8 @@ public class StreamVs {
     @Test
     public void newCartHandle() {
         AtomicReference<Double> money = new AtomicReference<>(0.0);
-        // 1 打印所有商品
-        List<String> resultSkuNameList = CartService.getCartSkuList().stream()
+        List<Sku> cartSkuList = CartService.getCartSkuList();
+        List<String> resultSkuNameList = cartSkuList.stream()
                                                     // 1 打印所有商品
                                                     .peek(sku -> System.out.println(JSON.toJSONString(sku, true)))
                                                     // 2 图书类过滤掉
@@ -88,7 +88,8 @@ public class StreamVs {
                                                     .peek(sku -> System.out.println(JSON.toJSONString(sku, true)))
                                                     // 3 其余的商品中买两件最贵的
                                                     // 3.1 排序
-                                                    .sorted(Comparator.comparing(Sku::getTotalPrice).reversed())
+                                                    .sorted(Comparator.comparing(Sku::getTotalPrice)
+                                                                      .reversed())
                                                     // 3.2 取最高价格两件
                                                     .limit(2)
                                                     // 4 只需要两件商品的名称和总价
