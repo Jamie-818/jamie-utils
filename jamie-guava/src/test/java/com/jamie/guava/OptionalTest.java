@@ -2,7 +2,9 @@ package com.jamie.guava;
 
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 /**
  * 学习java8中的Optional使用方法
@@ -15,7 +17,7 @@ public class OptionalTest {
      * 三种创建Optional对象方法
      */
     @Test
-    public void test() throws RuntimeException {
+    public void test() {
         // 创建空的Optional对象
         Optional<Object> empty = Optional.empty();
         // 使用非null值创建Optional对象
@@ -39,6 +41,22 @@ public class OptionalTest {
         //        optional.orElseThrow(() -> {
         //            throw new RuntimeException("引用缺失异常");
         //        });
+
+    }
+
+    /**
+     * 使用 Optional 避免流入参为null时报错
+     */
+    @Test
+    public void streamNull() {
+        List<String> list = null;
+        // 当 list为null时会报错
+        //        list.stream()
+        //            .forEach(System.out::println);
+        Optional.ofNullable(list)
+                .map(List::stream)
+                .orElseGet(Stream::empty)
+                .forEach(System.out::println);
 
     }
 
