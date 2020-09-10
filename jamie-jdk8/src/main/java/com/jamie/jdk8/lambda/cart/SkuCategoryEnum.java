@@ -1,4 +1,4 @@
-package com.jamie.lambda.cart;
+package com.jamie.jdk8.lambda.cart;
 
 /**
  * 商品类型枚举

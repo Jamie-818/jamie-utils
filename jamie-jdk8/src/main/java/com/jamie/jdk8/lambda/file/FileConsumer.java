@@ -1,4 +1,4 @@
-package com.jamie.lambda.file;
+package com.jamie.jdk8.lambda.file;
 
 /**
  * 文件处理函数式接口

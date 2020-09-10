@@ -1,4 +1,4 @@
-package com.jamie.lambda.file;
+package com.jamie.jdk8.lambda.file;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

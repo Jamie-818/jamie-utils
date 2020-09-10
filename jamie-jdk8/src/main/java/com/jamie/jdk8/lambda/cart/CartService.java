@@ -1,4 +1,4 @@
-package com.jamie.lambda.cart;
+package com.jamie.jdk8.lambda.cart;
 
 import java.util.ArrayList;
 import java.util.List;

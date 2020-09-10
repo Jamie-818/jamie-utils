@@ -1,4 +1,4 @@
-package com.jamie.lambda.cart;
+package com.jamie.jdk8.lambda.cart;
 
 /**
  * 对Sku的商品总价是否超过2000作为判断标准
