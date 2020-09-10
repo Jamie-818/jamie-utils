@@ -11,7 +11,7 @@ import java.io.IOException;
  * @author jamie
  * @date 2020/9/10 19:11
  */
-public class FileCopyTest {
+public class OldFileCopyTest {
 
     @Test
     public void copyFile() {
