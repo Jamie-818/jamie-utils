@@ -24,7 +24,7 @@ public class FileService {
         // 定义行变量和内容sb
         String line;
         StringBuilder stringBuilder = new StringBuilder();
-        // 炫辉读取文件内容
+        // 循环读取文件内容
         while(((line = bufferedReader.readLine()) != null)){
             stringBuilder.append(line).append("\n");
         }
