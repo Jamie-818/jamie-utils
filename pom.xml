@@ -25,6 +25,7 @@
         <module>jamie-file</module>
         <module>jamie-jdk8</module>
         <module>jamie-guava</module>
+        <module>jamie-thread</module>
     </modules>
 
     <properties>
