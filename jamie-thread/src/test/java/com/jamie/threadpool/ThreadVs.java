@@ -1,4 +1,4 @@
-package com.jamie.thread;
+package com.jamie.threadpool;
 
 import org.junit.Test;
 
