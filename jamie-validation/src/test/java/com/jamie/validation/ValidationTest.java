@@ -43,6 +43,7 @@ public class ValidationTest {
         userInfo2.setUserId("雪花ID");
         userInfo2.setUserName(" ");
         userInfo2.setPassWord("11111");
+        userInfo2.setEmail("buduideyouxiao@jami@jamie.com");
     }
 
     /**

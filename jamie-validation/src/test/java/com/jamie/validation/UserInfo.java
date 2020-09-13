@@ -2,6 +2,7 @@ package com.jamie.validation;
 
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -40,6 +41,7 @@ public class UserInfo {
     /**
      * 邮箱
      */
+    @Email(message = "邮箱必须有效邮箱")
     private String email;
 
     /**
