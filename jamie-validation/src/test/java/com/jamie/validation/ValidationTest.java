@@ -1,6 +1,5 @@
 package com.jamie.validation;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,10 +19,15 @@ public class ValidationTest {
     private Validator validator;
 
     // 待验证对象
-    private UserInfo userInfo;
+    private UserInfo userInfo1;
+
+    private UserInfo userInfo2;
 
     // 验证结果集合
-    private Set<ConstraintViolation<UserInfo>> set;
+    private Set<ConstraintViolation<UserInfo>> set1;
+
+    // 验证结果集合
+    private Set<ConstraintViolation<UserInfo>> set2;
 
     /**
      * 初始化操作
@@ -34,15 +38,9 @@ public class ValidationTest {
         validator = Validation.buildDefaultValidatorFactory()
                               .getValidator();
         // 初始化待验证对象 - 用户信息
-        userInfo = new UserInfo();
-    }
-
-    /**
-     * 结果打印
-     */
-    @After
-    public void print() {
-        set.forEach(item -> System.out.println(item.getMessage()));
+        userInfo1 = new UserInfo();
+        userInfo2 = new UserInfo();
+        userInfo2.setUserId("uuid");
     }
 
     /**
@@ -51,7 +49,12 @@ public class ValidationTest {
     @Test
     public void notNullValidation() {
         // 使用验证器对对象进行验证
-        set = validator.validate(userInfo);
+        set1 = validator.validate(userInfo1);
+        set1.forEach(item -> System.out.println("验证1的结果" + item.getMessage()));
+        // 因为没有没空，所以不会打印
+        set2 = validator.validate(userInfo2);
+        set2.forEach(item -> System.out.println("验证2的结果" + item.getMessage()));
+
     }
 
 }
