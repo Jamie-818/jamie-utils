@@ -62,6 +62,7 @@ public class UserInfo {
     /**
      * 好友列表
      */
+    @Size(min = 1, message = "不能少于1位好友")
     private List<UserInfo> friends;
 
     public String getUserId() {
