@@ -42,6 +42,7 @@ public class ValidationTest {
         userInfo2 = new UserInfo();
         userInfo2.setUserId("雪花ID");
         userInfo2.setUserName(" ");
+        userInfo2.setPassWord(" ");
     }
 
     /**
@@ -62,6 +63,19 @@ public class ValidationTest {
      */
     @Test
     public void notEmptyValidation() {
+        // 使用验证器对对象进行验证
+        set1 = validator.validate(userInfo1);
+        set1.forEach(item -> System.out.println("验证1的结果" + item.getMessage()));
+        // 因为没有为空，所以不会打印
+        set2 = validator.validate(userInfo2);
+        set2.forEach(item -> System.out.println("验证2的结果" + item.getMessage()));
+    }
+
+    /**
+     * 验证 @NotBlank 注解
+     */
+    @Test
+    public void notBlankValidation() {
         // 使用验证器对对象进行验证
         set1 = validator.validate(userInfo1);
         set1.forEach(item -> System.out.println("验证1的结果" + item.getMessage()));

@@ -1,5 +1,6 @@
 package com.jamie.validation;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -28,6 +29,7 @@ public class UserInfo {
     /**
      * 用户密码
      */
+    @NotBlank(message = "用户密码不能为空")
     private String passWord;
 
     /**
