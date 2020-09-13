@@ -35,7 +35,7 @@ public class UserInfoService {
      * 接收UserInfo作为参数的构造函数
      * @param info 用户信息
      */
-    public UserInfoService(UserInfo info) {
+    public UserInfoService(@Valid UserInfo info) {
     }
 
 }

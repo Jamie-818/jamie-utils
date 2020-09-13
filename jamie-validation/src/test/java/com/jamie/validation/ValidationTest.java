@@ -7,6 +7,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.executable.ExecutableValidator;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -153,6 +154,25 @@ public class ValidationTest {
         // 校验方法返回值是否符合约束
         otherSet = executableValidator.validateReturnValue(service, method, returnObject);
         otherSet.forEach(item -> System.out.println(item.getMessage()));
+    }
+
+    /**
+     * 对构造函数的输入参数进行校验
+     */
+    @Test
+    public void constructorValidation() throws NoSuchMethodException {
+        // 获取校验执行器
+        ExecutableValidator executableValidator = validator.forExecutables();
+        // 获取构造函数
+        Constructor<UserInfoService> constructor = UserInfoService.class.getConstructor(UserInfo.class);
+        // 构造输入参数
+        Object[] paramObject = {new UserInfo()};
+
+        // 校验构造函数
+        Set<ConstraintViolation<UserInfoService>> constraintViolations =
+                executableValidator.validateConstructorParameters(constructor, paramObject);
+        // 校验方法返回值是否符合约束
+        constraintViolations.forEach(item -> System.out.println(item.getMessage()));
     }
 
 }
