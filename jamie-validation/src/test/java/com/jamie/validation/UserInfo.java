@@ -58,6 +58,7 @@ public class UserInfo {
     /**
      * 手机号
      */
+    @Phone
     private String phone;
 
     /**
