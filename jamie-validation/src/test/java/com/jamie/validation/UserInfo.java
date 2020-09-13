@@ -1,5 +1,7 @@
 package com.jamie.validation;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -32,6 +34,7 @@ public class UserInfo {
      * NotBlank 自动去除字符串前后空格后验证是否为空
      */
     @NotBlank(message = "用户密码不能为空")
+    @Length(min = 6, max = 20, message = "密码长度不能少于6位，大于20位")
     private String passWord;
 
     /**
