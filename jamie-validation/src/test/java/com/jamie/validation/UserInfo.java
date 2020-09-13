@@ -1,5 +1,6 @@
 package com.jamie.validation;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +22,7 @@ public class UserInfo {
     /**
      * 用户名
      */
+    @NotEmpty(message = "用户名称不能为空")
     private String userName;
 
     /**

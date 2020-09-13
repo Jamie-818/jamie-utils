@@ -40,7 +40,8 @@ public class ValidationTest {
         // 初始化待验证对象 - 用户信息
         userInfo1 = new UserInfo();
         userInfo2 = new UserInfo();
-        userInfo2.setUserId("uuid");
+        userInfo2.setUserId("雪花ID");
+        userInfo2.setUserName(" ");
     }
 
     /**
@@ -51,10 +52,22 @@ public class ValidationTest {
         // 使用验证器对对象进行验证
         set1 = validator.validate(userInfo1);
         set1.forEach(item -> System.out.println("验证1的结果" + item.getMessage()));
-        // 因为没有没空，所以不会打印
+        // 因为没有为空，所以不会打印
         set2 = validator.validate(userInfo2);
         set2.forEach(item -> System.out.println("验证2的结果" + item.getMessage()));
+    }
 
+    /**
+     * 验证 @NotEmpty 注解
+     */
+    @Test
+    public void notEmptyValidation() {
+        // 使用验证器对对象进行验证
+        set1 = validator.validate(userInfo1);
+        set1.forEach(item -> System.out.println("验证1的结果" + item.getMessage()));
+        // 因为没有为空，所以不会打印
+        set2 = validator.validate(userInfo2);
+        set2.forEach(item -> System.out.println("验证2的结果" + item.getMessage()));
     }
 
 }
