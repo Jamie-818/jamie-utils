@@ -2,10 +2,7 @@ package com.jamie.validation;
 
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.util.Date;
 import java.util.List;
 
@@ -48,6 +45,13 @@ public class UserInfo {
      * 手机号
      */
     private String phone;
+
+    /**
+     * 年龄
+     */
+    @Min(value = 18, message = "年龄不能少于18岁")
+    @Max(value = 60, message = "年龄不能大于18岁")
+    private Integer age;
 
     /**
      * 生日
@@ -113,6 +117,14 @@ public class UserInfo {
 
     public void setFriends(List<UserInfo> friends) {
         this.friends = friends;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
 }

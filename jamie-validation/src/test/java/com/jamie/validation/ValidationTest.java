@@ -44,6 +44,7 @@ public class ValidationTest {
         userInfo2.setUserName(" ");
         userInfo2.setPassWord("11111");
         userInfo2.setEmail("buduideyouxiao@jami@jamie.com");
+        userInfo2.setAge(17);
     }
 
     /**
