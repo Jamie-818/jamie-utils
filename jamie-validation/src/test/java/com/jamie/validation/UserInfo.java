@@ -22,12 +22,14 @@ public class UserInfo {
 
     /**
      * 用户名
+     * NotEmpty 不会自动去掉前后空格
      */
     @NotEmpty(message = "用户名称不能为空")
     private String userName;
 
     /**
      * 用户密码
+     * NotBlank 自动去除字符串前后空格后验证是否为空
      */
     @NotBlank(message = "用户密码不能为空")
     private String passWord;

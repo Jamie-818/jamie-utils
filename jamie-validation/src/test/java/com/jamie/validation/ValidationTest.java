@@ -53,7 +53,7 @@ public class ValidationTest {
         // 使用验证器对对象进行验证
         set1 = validator.validate(userInfo1);
         set1.forEach(item -> System.out.println("验证1的结果" + item.getMessage()));
-        // 因为没有为空，所以不会打印
+        System.out.println("--------  分隔符  --------");
         set2 = validator.validate(userInfo2);
         set2.forEach(item -> System.out.println("验证2的结果" + item.getMessage()));
     }
@@ -66,7 +66,7 @@ public class ValidationTest {
         // 使用验证器对对象进行验证
         set1 = validator.validate(userInfo1);
         set1.forEach(item -> System.out.println("验证1的结果" + item.getMessage()));
-        // 因为没有为空，所以不会打印
+        System.out.println("--------  分隔符  --------");
         set2 = validator.validate(userInfo2);
         set2.forEach(item -> System.out.println("验证2的结果" + item.getMessage()));
     }
@@ -79,7 +79,7 @@ public class ValidationTest {
         // 使用验证器对对象进行验证
         set1 = validator.validate(userInfo1);
         set1.forEach(item -> System.out.println("验证1的结果" + item.getMessage()));
-        // 因为没有为空，所以不会打印
+        System.out.println("--------  分隔符  --------");
         set2 = validator.validate(userInfo2);
         set2.forEach(item -> System.out.println("验证2的结果" + item.getMessage()));
     }
