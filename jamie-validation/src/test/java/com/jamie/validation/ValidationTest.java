@@ -6,6 +6,7 @@ import org.junit.Test;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
+import java.util.Calendar;
 import java.util.Set;
 
 /**
@@ -45,6 +46,9 @@ public class ValidationTest {
         userInfo2.setPassWord("11111");
         userInfo2.setEmail("buduideyouxiao@jami@jamie.com");
         userInfo2.setAge(17);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2099, Calendar.FEBRUARY, 1);
+        userInfo2.setBirthday(calendar.getTime());
     }
 
     /**

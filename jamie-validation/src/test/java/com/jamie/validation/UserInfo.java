@@ -56,6 +56,7 @@ public class UserInfo {
     /**
      * 生日
      */
+    @Past(message = "生日不能为未来时间,或者当前时间点")
     private Date birthday;
 
     /**
