@@ -21,7 +21,7 @@ public class UserInfoService {
      * 作为输出参数
      * @return userInfo 用户信息
      */
-    public UserInfo getUserInfo() {
+    public @Valid UserInfo getUserInfo() {
         return new UserInfo();
     }
 

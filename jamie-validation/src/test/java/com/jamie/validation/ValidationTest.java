@@ -7,6 +7,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.executable.ExecutableValidator;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -132,6 +133,25 @@ public class ValidationTest {
         // 方法输入参数
         Object[] paramObject = {new UserInfo()};
         otherSet = executableValidator.validateParameters(service, method, paramObject);
+        otherSet.forEach(item -> System.out.println(item.getMessage()));
+    }
+
+    /**
+     * 对方法的返回值参数进行校验
+     */
+    @Test
+    public void returnValidation() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        // 获取校验执行器
+        ExecutableValidator executableValidator = validator.forExecutables();
+        // 构造要验证的方法对象
+        UserInfoService service = new UserInfoService();
+
+        Method method = service.getClass()
+                               .getMethod("getUserInfo");
+        // 调用方法得到返回值
+        Object returnObject = method.invoke(service);
+        // 校验方法返回值是否符合约束
+        otherSet = executableValidator.validateReturnValue(service, method, returnObject);
         otherSet.forEach(item -> System.out.println(item.getMessage()));
     }
 
