@@ -2,8 +2,10 @@ package com.jamie.validation;
 
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.GroupSequence;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+import javax.validation.groups.Default;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +22,10 @@ public class UserInfo {
 
     // 注册场景
     public interface RegisterGroup {}
+
+    // 组排序场景
+    @GroupSequence({RegisterGroup.class, LoginGroup.class, Default.class})
+    public interface Group {}
 
     /**
      * 用户ID
