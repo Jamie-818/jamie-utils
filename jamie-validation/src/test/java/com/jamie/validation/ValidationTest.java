@@ -66,4 +66,24 @@ public class ValidationTest {
         set2.forEach(item -> System.out.println("验证2的结果" + item.getMessage()));
     }
 
+    /**
+     * 级联验证测试
+     */
+    @Test
+    public void graphValidation() {
+        ArrayList<UserInfo> userInfos = new ArrayList<UserInfo>() {
+            {
+                add(new UserInfo());
+            }
+
+        };
+        userInfo2.setFriends(userInfos);
+        // 使用验证器对对象进行验证
+        set1 = validator.validate(userInfo1);
+        set1.forEach(item -> System.out.println("验证1的结果" + item.getMessage()));
+        System.out.println("--------  分隔符  --------");
+        set2 = validator.validate(userInfo2);
+        set2.forEach(item -> System.out.println("验证2的结果" + item.getMessage()));
+    }
+
 }

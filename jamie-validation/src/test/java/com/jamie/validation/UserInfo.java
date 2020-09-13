@@ -2,6 +2,7 @@ package com.jamie.validation;
 
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.Date;
 import java.util.List;
@@ -63,7 +64,7 @@ public class UserInfo {
      * 好友列表
      */
     @Size(min = 1, message = "不能少于1位好友")
-    private List<UserInfo> friends;
+    private List<@Valid UserInfo> friends;
 
     public String getUserId() {
         return userId;
@@ -127,6 +128,9 @@ public class UserInfo {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public UserInfo() {
     }
 
 }
