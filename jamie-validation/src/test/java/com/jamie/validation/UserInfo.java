@@ -15,10 +15,16 @@ import java.util.List;
  */
 public class UserInfo {
 
+    // 登录场景
+    public interface LoginGroup {}
+
+    // 注册场景
+    public interface RegisterGroup {}
+
     /**
      * 用户ID
      */
-    @NotNull(message = "用户ID不能为空")
+    @NotNull(message = "用户ID不能为空", groups = LoginGroup.class)
     private String userId;
 
     /**
@@ -39,6 +45,7 @@ public class UserInfo {
     /**
      * 邮箱
      */
+    @NotNull(message = "邮箱不能为空", groups = RegisterGroup.class)
     @Email(message = "邮箱必须有效邮箱")
     private String email;
 
