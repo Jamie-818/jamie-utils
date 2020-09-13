@@ -6,6 +6,8 @@ import org.junit.Test;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
+import javax.validation.executable.ExecutableValidator;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Set;
@@ -30,6 +32,9 @@ public class ValidationTest {
 
     // 验证结果集合
     private Set<ConstraintViolation<UserInfo>> set2;
+
+    // 验证结果集合
+    Set<ConstraintViolation<UserInfoService>> otherSet;
 
     /**
      * 初始化操作
@@ -110,6 +115,24 @@ public class ValidationTest {
         System.out.println("--------  分隔符  --------");
         set2 = validator.validate(userInfo2, UserInfo.Group.class);
         set2.forEach(item -> System.out.println("验证2的结果" + item.getMessage()));
+    }
+
+    /**
+     * 对方法的输入参数进行校验
+     */
+    @Test
+    public void paramValidation() throws NoSuchMethodException {
+        // 获取校验执行器
+        ExecutableValidator executableValidator = validator.forExecutables();
+        // 待验证对象
+        UserInfoService service = new UserInfoService();
+        // 待验证方法
+        Method method = service.getClass()
+                               .getMethod("setUserInfo", UserInfo.class);
+        // 方法输入参数
+        Object[] paramObject = {new UserInfo()};
+        otherSet = executableValidator.validateParameters(service, method, paramObject);
+        otherSet.forEach(item -> System.out.println(item.getMessage()));
     }
 
 }
