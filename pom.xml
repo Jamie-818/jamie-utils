@@ -27,6 +27,7 @@
         <module>jamie-guava</module>
         <module>jamie-thread</module>
         <module>jamie-lombok</module>
+        <module>jamie-validation</module>
     </modules>
 
     <properties>
