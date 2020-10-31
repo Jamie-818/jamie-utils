@@ -28,6 +28,9 @@
         <module>jamie-thread</module>
         <module>jamie-lombok</module>
         <module>jamie-validation</module>
+        <module>jamie-okhttp</module>
+        <module>jamie-random</module>
+        <module>jamie-reflect</module>
     </modules>
 
     <properties>
