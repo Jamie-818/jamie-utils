@@ -6,6 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * 标注人物信息注解
  * @author jamie
  */
 @Target(ElementType.FIELD)
@@ -13,14 +14,15 @@ import java.lang.annotation.Target;
 public @interface PersonInfoAnnotation {
 
     /** 名字 */
-    public String name();
+    String name();
 
     /** 年龄 */
-    public int age() default 19;
+    int age() default 19;
+
     /** 性别 */
-    public String gender() default "男";
+    String gender() default "男";
 
     /** 开发语言 */
-    public String[] language();
+    String[] language();
 
 }

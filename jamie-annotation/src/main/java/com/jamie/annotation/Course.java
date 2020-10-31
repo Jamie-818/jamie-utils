@@ -1,9 +1,13 @@
 package com.jamie.annotation;
 
+/**
+ * 注解测试属性类
+ * @author jamie
+ */
 @CourseInfoAnnotation(courseName = "剑指java面试", courseTag = "面试", courseProfile = "不仅讲解Java相关的核心知识，还涉及网络、数据库、缓存框架等核心知识，"
         + "帮助大家构建海陆空一体化的面试护城河。"
         + "全面提升大家的内功。")
-public class ImoocCourse {
+public class Course {
 
     @PersonInfoAnnotation(name = "翔仔", language = {"Java", "C++", "Go", "Python", "PHP", "JS"})
     private String author;

@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 注解
+ * 标注课程信息注解
  * @author jamrie
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
@@ -14,12 +14,15 @@ import java.lang.annotation.Target;
 public @interface CourseInfoAnnotation {
 
     /** 课程名称 */
-    public String courseName();
+    String courseName();
+
     /** 课程标签 */
-    public String courseTag();
+    String courseTag();
+
     /** 课程简介 */
-    public String courseProfile();
+    String courseProfile();
+
     /** 课程序号 */
-    public int courseIndex() default 303;
+    int courseIndex() default 303;
 
 }

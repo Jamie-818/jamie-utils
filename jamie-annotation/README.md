@@ -15,8 +15,8 @@
         - 方法参数和本地变量(如循环变量、catch参数)
     - @Retention：注解的生命周期
         - 用来定义注解的生命周期
-        - SOURCE：只在源代码中，编译后代码不出现
-        - CLASS：编译后还存在
-        - RUNTIME：运行时有效
+        - RetentionPolicy.SOURCE：只在源代码中，编译后代码不出现
+        - RetentionPolicy.CLASS：编译后还存在
+        - RetentionPolicy.RUNTIME：运行时有效
     - @Documented：注解是否应当被包含在JavaDoc文档中
     - @Inherited：是否允许子类继承该注解
