@@ -1,5 +1,7 @@
 package com.jamie.annotation;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.annotation.Annotation;
@@ -8,12 +10,26 @@ import java.lang.reflect.Method;
 
 public class AnnotationParserTest {
 
+    /** Class对象 */
+    Class<?> clazz = null;
+
+    @Before
+    public void init() throws ClassNotFoundException {
+        System.out.println("************开始********************");
+        // 获取class对象
+        clazz = Class.forName("com.jamie.annotation.Course");
+    }
+
+    @After
+    public void destroy() {
+        System.out.println("************结束********************");
+    }
+
     /**
      * 解析类的注解
      */
     @Test
-    public void parseTypeAnnotation() throws ClassNotFoundException {
-        Class<?> clazz = Class.forName("com.jamie.annotation.Course");
+    public void parseTypeAnnotation() {
         //这里获取的是class对象的注解，而不是其里面的方法和成员变量的注解
         Annotation[] annotations = clazz.getAnnotations();
         for(Annotation annotation: annotations){
@@ -29,8 +45,7 @@ public class AnnotationParserTest {
      * 解析成员变量上的标签
      */
     @Test
-    public void parseFieldAnnotation() throws ClassNotFoundException {
-        Class<?> clazz = Class.forName("com.jamie.annotation.Course");
+    public void parseFieldAnnotation() {
         Field[] fields = clazz.getDeclaredFields();
         for(Field f: fields){
             //判断成员变量中是否有指定注解类型的注解
@@ -52,8 +67,7 @@ public class AnnotationParserTest {
      * 解析方法注解
      */
     @Test
-    public void parseMethodAnnotation() throws ClassNotFoundException {
-        Class<?> clazz = Class.forName("com.jamie.annotation.Course");
+    public void parseMethodAnnotation() {
         Method[] methods = clazz.getDeclaredMethods();
         for(Method method: methods){
             //判断方法中是否有指定注解类型的注解

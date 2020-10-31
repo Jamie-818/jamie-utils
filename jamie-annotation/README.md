@@ -20,3 +20,13 @@
         - RetentionPolicy.RUNTIME：运行时有效
     - @Documented：注解是否应当被包含在JavaDoc文档中
     - @Inherited：是否允许子类继承该注解
+    
+- 注解获取属性值的底层实现
+    - JVM会为注解生成代理对象
+- 注解的工作原理
+    - 通过键值对的形式为注解属性赋值
+    - 编译器检查注解的使用范围，将注解信息写入元素属性表
+    - 运行时JVM将RUNTIME的所有注解属性去除并最终存入map里
+    - 创建AnnotationInvocationHandler实例并传入前面的map
+    - JVM使用JDK动态代理为注解生成代理类，并初始化处理器
+    - 调用invoke方法，通过传入方法名返回注解对应的属性值
