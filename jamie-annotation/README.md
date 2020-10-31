@@ -1,0 +1,22 @@
+# jamie-annotation 注解
+- 注解的作用
+    - 作为特定的标记，用于告诉编译器一些信息
+    - 编译时动态处理，如动态生成代码
+    - 运行时动态处理，作为额外信息的载体，如获取注解信息
+- 注解的分类
+    - 标准注解：@Override、@Deprecated、@SuppressWarnings
+    - 元注解：@Retention、@Target、@Inherited、@Documented
+    - 自定义注解
+- 元注解
+    - 用于修饰注解的注解，通常用在注解的定义上
+    - @Target：注解的作用目标
+        - packages、types（类、接口、枚举、Annotation类型）
+        - 类型成员（方法、构造方法、成员变量、枚举值）
+        - 方法参数和本地变量(如循环变量、catch参数)
+    - @Retention：注解的生命周期
+        - 用来定义注解的生命周期
+        - SOURCE：只在源代码中，编译后代码不出现
+        - CLASS：编译后还存在
+        - RUNTIME：运行时有效
+    - @Documented：注解是否应当被包含在JavaDoc文档中
+    - @Inherited：是否允许子类继承该注解

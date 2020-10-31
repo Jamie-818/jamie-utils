@@ -31,6 +31,7 @@
         <module>jamie-okhttp</module>
         <module>jamie-random</module>
         <module>jamie-reflect</module>
+        <module>jamie-annotation</module>
     </modules>
 
     <properties>
