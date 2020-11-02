@@ -32,6 +32,7 @@
         <module>jamie-random</module>
         <module>jamie-reflect</module>
         <module>jamie-annotation</module>
+        <module>jamie-pattern</module>
     </modules>
 
     <properties>
